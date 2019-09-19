@@ -27,7 +27,7 @@ unsolved homicides within the United States.
 # Packages
 
 ```{r}
-library(tidyvers)
+library(tidyverse)
 ```
 
 # Data
