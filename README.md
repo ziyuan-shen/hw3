@@ -1,6 +1,6 @@
 # STA 523 :: Homework 3
 
-[![wercker status](https://app.wercker.com/status/3a91dc9648aa6a6ee7233f54c5e8f210/s/master "wercker status")](https://app.wercker.com/project/byKey/3a91dc9648aa6a6ee7233f54c5e8f210)
+wercker-badge-here
 
 ## Introduction
 
