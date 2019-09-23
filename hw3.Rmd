@@ -41,13 +41,21 @@ names(murder) <- tolower(names(murder))
 
 ## Task 1
 
-### 1.How many distinct counties in North Carolina had a recorded homicide in 2017?
+#### 1.How many distinct counties in North Carolina had a recorded homicide in 2017?
 ```{r task1-1}
 murder %>%
   filter(state=='North Carolina', year==2017) %>%
  # select(cntyfips) %>%
   summarise(n_distinct(cntyfips))
 ```
-
+#### 2.Which year and month combinations had the three most homicides in North Carolina from 2013 to 2017?
+```{r task1-2}
+murder %>%
+  filter(state=='North Carolina', year>=2013 & year<=2017) %>%
+  group_by(year, month) %>%
+  summarize(count = n()) %>%
+  arrange(desc(count))
+  # slice(1:3)
+```
 
 ## Task 2
