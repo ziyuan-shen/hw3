@@ -1,6 +1,6 @@
 ---
 title: "Homework 3"
-author: '[Group names]'
+author: 'Cheetah'
 date: "9/19/2019"
 output: 
   html_document:
@@ -40,6 +40,22 @@ names(murder) <- tolower(names(murder))
 # Tasks
 
 ## Task 1
+
+### 1.How many distinct counties in North Carolina had a recorded homicide in 2017?
+
+```r
+murder %>%
+  filter(state=='North Carolina', year==2017) %>%
+ # select(cntyfips) %>%
+  summarise(n_distinct(cntyfips))
+```
+
+```
+# A tibble: 1 x 1
+  `n_distinct(cntyfips)`
+                   <int>
+1                     73
+```
 
 
 ## Task 2

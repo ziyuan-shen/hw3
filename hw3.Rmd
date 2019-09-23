@@ -1,6 +1,6 @@
 ---
 title: "Homework 3"
-author: '[Group names]'
+author: 'Cheetah'
 date: "9/19/2019"
 output: 
   html_document:
@@ -26,13 +26,13 @@ unsolved homicides within the United States.
 
 # Packages
 
-```{r}
+```{r error=TRUE}
 library(tidyverse)
 ```
 
 # Data
 
-```{r}
+```{r read-data}
 murder <- read_csv("https://www.dropbox.com/s/wzp6o78lcosp3ux/map.csv?dl=1")
 names(murder) <- tolower(names(murder))
 ```
@@ -40,6 +40,14 @@ names(murder) <- tolower(names(murder))
 # Tasks
 
 ## Task 1
+
+### 1.How many distinct counties in North Carolina had a recorded homicide in 2017?
+```{r task1-1}
+murder %>%
+  filter(state=='North Carolina', year==2017) %>%
+ # select(cntyfips) %>%
+  summarise(n_distinct(cntyfips))
+```
 
 
 ## Task 2
