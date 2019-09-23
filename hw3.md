@@ -41,7 +41,7 @@ names(murder) <- tolower(names(murder))
 
 ## Task 1
 
-### 1.How many distinct counties in North Carolina had a recorded homicide in 2017?
+#### 1.How many distinct counties in North Carolina had a recorded homicide in 2017?
 
 ```r
 murder %>%
@@ -56,6 +56,32 @@ murder %>%
                    <int>
 1                     73
 ```
+#### 2.Which year and month combinations had the three most homicides in North Carolina from 2013 to 2017?
+
+```r
+murder %>%
+  filter(state=='North Carolina', year>=2013 & year<=2017) %>%
+  group_by(year, month) %>%
+  summarize(count = n()) %>%
+  arrange(desc(count)) %>%
+  head(3)
+```
+
+```
+# A tibble: 3 x 3
+# Groups:   year [2]
+   year month  count
+  <dbl> <chr>  <int>
+1  2017 August    70
+2  2016 March     64
+3  2017 April     63
+```
+
+```r
+  # slice(1:3)
+```
+
+#### 3.What were the top three states that had the most homicides by "Murder and non-negligent manslaughter" that were solved and crossed racial lines, i.e., where the offender and victim were of different race? Include the counts in your answer.
 
 
 ## Task 2

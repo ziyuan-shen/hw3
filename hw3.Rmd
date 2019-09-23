@@ -54,8 +54,23 @@ murder %>%
   filter(state=='North Carolina', year>=2013 & year<=2017) %>%
   group_by(year, month) %>%
   summarize(count = n()) %>%
-  arrange(desc(count))
-  # slice(1:3)
+  arrange(desc(count)) %>%
+  head(3)
+  #slice(1:3)
 ```
+
+#### 3.What were the top three states that had the most homicides by "Murder and non-negligent manslaughter" that were solved and crossed racial lines, i.e., where the offender and victim were of different race? Include the counts in your answer.
+```{r task1-3}
+murder %>%
+  filter(homicide=='Murder and non-negligent manslaughter', solved=='Yes', vicrace!=offrace) %>%
+  select(state, homicide, solved, vicrace, offrace) %>%
+  group_by(state) %>%
+  summarize(count = n()) %>%
+  arrange(desc(count)) %>%
+  head(3)
+```
+#### 4.For the state of California, what is the relative frequency of unsolved homicides for each year in the data set?
+
+
 
 ## Task 2

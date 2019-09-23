@@ -389,8 +389,8 @@ names(murder) &lt;- tolower(names(murder))</code></pre>
 <h1>Tasks</h1>
 <div id="task-1" class="section level2">
 <h2>Task 1</h2>
-<div id="how-many-distinct-counties-in-north-carolina-had-a-recorded-homicide-in-2017" class="section level3">
-<h3>1.How many distinct counties in North Carolina had a recorded homicide in 2017?</h3>
+<div id="how-many-distinct-counties-in-north-carolina-had-a-recorded-homicide-in-2017" class="section level4">
+<h4>1.How many distinct counties in North Carolina had a recorded homicide in 2017?</h4>
 <pre class="r"><code>murder %&gt;%
   filter(state=='North Carolina', year==2017) %&gt;%
  # select(cntyfips) %&gt;%
@@ -399,6 +399,26 @@ names(murder) &lt;- tolower(names(murder))</code></pre>
   `n_distinct(cntyfips)`
                    &lt;int&gt;
 1                     73</code></pre>
+</div>
+<div id="which-year-and-month-combinations-had-the-three-most-homicides-in-north-carolina-from-2013-to-2017" class="section level4">
+<h4>2.Which year and month combinations had the three most homicides in North Carolina from 2013 to 2017?</h4>
+<pre class="r"><code>murder %&gt;%
+  filter(state=='North Carolina', year&gt;=2013 &amp; year&lt;=2017) %&gt;%
+  group_by(year, month) %&gt;%
+  summarize(count = n()) %&gt;%
+  arrange(desc(count)) %&gt;%
+  head(3)</code></pre>
+<pre><code># A tibble: 3 x 3
+# Groups:   year [2]
+   year month  count
+  &lt;dbl&gt; &lt;chr&gt;  &lt;int&gt;
+1  2017 August    70
+2  2016 March     64
+3  2017 April     63</code></pre>
+<pre class="r"><code>  # slice(1:3)</code></pre>
+</div>
+<div id="what-were-the-top-three-states-that-had-the-most-homicides-by-murder-and-non-negligent-manslaughter-that-were-solved-and-crossed-racial-lines-i.e.-where-the-offender-and-victim-were-of-different-race-include-the-counts-in-your-answer." class="section level4">
+<h4>3.What were the top three states that had the most homicides by “Murder and non-negligent manslaughter” that were solved and crossed racial lines, i.e., where the offender and victim were of different race? Include the counts in your answer.</h4>
 </div>
 </div>
 <div id="task-2" class="section level2">
