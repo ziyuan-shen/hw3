@@ -71,6 +71,29 @@ murder %>%
 ```
 #### 4.For the state of California, what is the relative frequency of unsolved homicides for each year in the data set?
 
+```{r task1-4}
+murder %>%
+  filter(state=='California') %>%
+  select(year, solved) %>%
+  group_by(year, solved) %>%
+  summarize(count=n())
+```
 
+1. Based on your initial (further) analysis, form a narrative of what can be conveyed to
+	a reader using the data and possibly supplementary data.
+	
+As stated above, the Murder Accountability Project is a nonprofit group organized in 2015 and 
+dedicated to educate Americans on the importance of accurately accounting for 
+unsolved homicides within the United States. There are a myriad of factors necessary to effectively solve homicides. Thus, detailed analysis of homicide occurrences across the United States is paramount to the alleviation of unsolved homicides. We will determine the three states with the most unsolved homicides from the years 1976 to 2017, and analyze the frequency of homicides within these states over the given range of time. Then, we will determine the types of weapons used in these unsolved homicides and analyze any relevant trends in the use of specific weapons and unsolved homicides, across the three states.
 
-## Task 2
+```{r determine-states}
+murder %>%
+  filter(solved=='No') %>%
+  select(state) %>%
+  group_by(state) %>%
+  summarize(count=n()) %>%
+  arrange(desc(count)) %>%
+  head(3)
+```
+
+*** California, New York and Texas have most unsolved homicides over the past years.***
