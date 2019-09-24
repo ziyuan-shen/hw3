@@ -97,3 +97,16 @@ murder %>%
 ```
 
 *** California, New York and Texas have most unsolved homicides over the past years.***
+
+```{r unsolved-homicide-count}
+unsolved_homicide_count <-
+  murder %>%
+  filter(state=='California' | state=='New York' | state=='Texas') %>%
+  filter(solved=='No') %>%
+  select(year, state) %>%
+  group_by(year, state) %>%
+  summarize(unsolved_homicide_count=n())
+ggplot(data=unsolved_homicide_count, mapping=aes(x=year, y=unsolved_homicide_count, color=state)) + geom_line(show.legend=T)
+```
+
+***The plot above shows how the number of total unsolved homicides evolves over the years in the top three states***
